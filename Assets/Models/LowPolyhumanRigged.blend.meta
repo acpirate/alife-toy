@@ -1,0 +1,145 @@
+fileFormatVersion: 2
+guid: 5a273ee93d7d84d7fa9ef6dd1cc4af26
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: arm_lower_L
+    100002: arm_lower_R
+    100004: arm_upper_L
+    100006: arm_upper_R
+    100008: Armature
+    100010: Bone_004
+    100012: controllerBone
+    100014: ff1_L
+    100016: ff1_R
+    100018: ff2_L
+    100020: ff2_R
+    100022: foot_controller_L
+    100024: foot_controller_R
+    100026: foot_L
+    100028: foot_R
+    100030: hand_L
+    100032: hand_R
+    100034: head
+    100036: hips_pelvisIK
+    100038: leg_lower_L
+    100040: leg_lower_R
+    100042: leg_upper_L
+    100044: leg_upper_R
+    100046: //RootNode
+    100048: male
+    100050: neck
+    100052: pelvis
+    100054: pf1_L
+    100056: pf1_R
+    100058: pf2_L
+    100060: pf2_R
+    100062: ribs
+    100064: shoulder_L
+    100066: shoulder_R
+    100068: thumb1_L
+    100070: thumb1_R
+    100072: thumb2_L
+    100074: thumb2_R
+    100076: thumb3_L
+    100078: thumb3_R
+    100080: toes_L
+    100082: toes_R
+    400000: arm_lower_L
+    400002: arm_lower_R
+    400004: arm_upper_L
+    400006: arm_upper_R
+    400008: Armature
+    400010: Bone_004
+    400012: controllerBone
+    400014: ff1_L
+    400016: ff1_R
+    400018: ff2_L
+    400020: ff2_R
+    400022: foot_controller_L
+    400024: foot_controller_R
+    400026: foot_L
+    400028: foot_R
+    400030: hand_L
+    400032: hand_R
+    400034: head
+    400036: hips_pelvisIK
+    400038: leg_lower_L
+    400040: leg_lower_R
+    400042: leg_upper_L
+    400044: leg_upper_R
+    400046: //RootNode
+    400048: male
+    400050: neck
+    400052: pelvis
+    400054: pf1_L
+    400056: pf1_R
+    400058: pf2_L
+    400060: pf2_R
+    400062: ribs
+    400064: shoulder_L
+    400066: shoulder_R
+    400068: thumb1_L
+    400070: thumb1_R
+    400072: thumb2_L
+    400074: thumb2_R
+    400076: thumb3_L
+    400078: thumb3_R
+    400080: toes_L
+    400082: toes_R
+    4300000: male
+    7400000: Default Take
+    9500000: //RootNode
+    13700000: male
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  userData: 

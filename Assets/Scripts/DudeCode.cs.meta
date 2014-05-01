@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 7a8e2b155be154fa99b6e2550f041659
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - HealthBarTexture: {fileID: 2800000, guid: 43fdc8d12750c4567a48be020a1fda84, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
