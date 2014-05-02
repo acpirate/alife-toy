@@ -6,9 +6,9 @@ public class GameControllerCode : MonoBehaviour {
 	public GameObject Dude;
 	public GameObject Food;
 
-	public int numberOfDudesToSpawn;
-	public int numberOfFoodsToSpawn;
-	public int spawnRadius;
+	int numberOfDudesToSpawn=Parameters.Field_NumberOfDudesToSpawn;
+	int numberOfFoodsToSpawn=Parameters.Field_NumberOfFoodsToSpawn;
+	int spawnRadius=Parameters.Field_SpawnRadius;
 
 	//monobehaviors
 

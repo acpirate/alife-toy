@@ -7,8 +7,8 @@ public enum DudeStatus { Normal, Hungry };
 
 public class DudeCode : MonoBehaviour {
 
-	int Metabolism=10000;
-	int Life=10000;
+	int Metabolism=Parameters.Dude_StartingMetabolism;
+	int Life=Parameters.Dude_StartingLife;
 
 	DudeBehavior behavior=DudeBehavior.Idle;
 	DudeStatus status=DudeStatus.Normal;
@@ -25,27 +25,27 @@ public class DudeCode : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		//decrease your metabolism level every frame
-		Metabolism--;
+		Metabolism-=Parameters.Dude_MetabolismDrainRate;
 		//starvation damage
 		if (Metabolism<=0) {
 			//metabolism can't get below 0
 			Metabolism=0;
-			Life--;
+			Life-=Parameters.Dude_StarvationDamageRate;
 		}
 		//Die at 0 life
 		if (Life<=0) Destroy(transform.gameObject);
-		//get hungry at less than 9000 metabolism
-		if (Metabolism<9000) {
+		//get hungry at less than hunger threshold
+		if (Metabolism<Parameters.Dude_HungerThreshold) {
 			status=DudeStatus.Hungry;
 		}
-		if (Metabolism>=9000) {
+		if (Metabolism>=Parameters.Dude_HungerThreshold) {
 			status=DudeStatus.Normal;
 		}
 		// if he is hungry check if there is food near him
 		if (status==DudeStatus.Hungry && behavior!=DudeBehavior.Eating) CheckForFood();
 		if (behavior==DudeBehavior.Eating) {
-			Metabolism+=2;
-			if (Metabolism>=10000) {
+			Metabolism+=Parameters.Dude_EatingGain;
+			if (Metabolism>=Parameters.Dude_StartingMetabolism) {
 				if (myFood!=null) {
 					myFood.GetComponent<FoodController>().SetEater(null);
 					myFood=null;
@@ -99,7 +99,7 @@ public class DudeCode : MonoBehaviour {
 
 	void CheckForFood() {
 		//find close things
-		Collider[] closeThings = Physics.OverlapSphere(transform.position,10);
+		Collider[] closeThings = Physics.OverlapSphere(transform.position,Parameters.Dude_EatingDistance);
 		//iterate over list of close things
 		foreach (Collider closeThing in closeThings) {
 			//if the thing it found is food

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class FoodController : MonoBehaviour {
 
-	float Nutrition = 2000;
+	float Nutrition = Parameters.Food_StartingNutrition;
 	GameObject Eater = null;
 	bool showUnitStats=false;
 
@@ -16,7 +16,7 @@ public class FoodController : MonoBehaviour {
 	void FixedUpdate () {
 
 		//lose nutrition if someone is eating it
-		if (Eater!=null) Nutrition--;
+		if (Eater!=null) Nutrition-=Parameters.Dude_EatingRate;
 		//destroy if it has no nutrition left
 		if (Nutrition<=0) { 
 			if (Eater!=null) {
