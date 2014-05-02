@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
-public enum DudeBehavior { Idle, Eating, LookingForFood };
+/*
+public enum DudeBehavior { Idle, Eating, LookingForFood, MovingToDestination };
 public enum DudeStatus { Normal, Hungry };
-
+*/
 public class DudeCode : MonoBehaviour {
-
+/*
 	int Metabolism=Parameters.Dude_StartingMetabolism;
 	int Life=Parameters.Dude_StartingLife;
 
@@ -169,6 +169,6 @@ public class DudeCode : MonoBehaviour {
 	}
 
 
-
+*/
 }
 

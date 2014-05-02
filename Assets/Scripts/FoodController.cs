@@ -4,7 +4,7 @@ using System.Collections;
 public class FoodController : MonoBehaviour {
 
 	float Nutrition = Parameters.Food_StartingNutrition;
-	GameObject Eater = null;
+	GameObject Claimer = null;
 	bool showUnitStats=false;
 
 	// Use this for initialization
@@ -16,11 +16,11 @@ public class FoodController : MonoBehaviour {
 	void FixedUpdate () {
 
 		//lose nutrition if someone is eating it
-		if (Eater!=null) Nutrition-=Parameters.Dude_EatingRate;
+		if (Claimer!=null) Nutrition-=Parameters.Dude_EatingRate;
 		//destroy if it has no nutrition left
 		if (Nutrition<=0) { 
-			if (Eater!=null) {
-				Eater.GetComponent<DudeCode>().FoodGone();
+			if (Claimer!=null) {
+				//Eater.GetComponent<DudeCode>().FoodGone();
 			}
 			Destroy(transform.gameObject);
 		}
@@ -48,18 +48,18 @@ public class FoodController : MonoBehaviour {
 	//begin custom functions
 	void ShowUnitStats() {
 		GUI.Label(new Rect(10,10,1000,100),"Nutrion: "+Nutrition);
-		GUI.Label(new Rect(10,30,1000,100),"Being Eaten By: "+ Eater);
+		GUI.Label(new Rect(10,30,1000,100),"Claimed By: "+ Claimer);
 		//Debug.Log("Metabolism: "+Metabolism+" Life: "+Life);
 	}
-	public void SetEater(GameObject eaterToSet) {
-		Eater=eaterToSet;
+	public void setClaimer(GameObject claimerToSet) {
+		Claimer=claimerToSet;
 	}
 
-	public GameObject GetEater() {
-		return Eater;
+	public GameObject getClaimer() {
+		return Claimer;
 	}
 
-	void NotBeingEaten() {
-		Eater=null;
+	void NotClaimed() {
+		Claimer=null;
 	}
 }
