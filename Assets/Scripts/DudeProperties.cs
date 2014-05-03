@@ -49,6 +49,10 @@ public class DudeProperties : MonoBehaviour {
 		return Metabolism;
 	}
 
+	public GameObject getFoodTarget() {
+		return foodTarget;
+	}
+
 	public DudeStatus getStatus() {
 		return status;
 	}

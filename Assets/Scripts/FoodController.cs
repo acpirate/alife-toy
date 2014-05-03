@@ -14,17 +14,7 @@ public class FoodController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-
-		//lose nutrition if someone is eating it
-		if (Claimer!=null) Nutrition-=Parameters.Dude_EatingRate;
-		//destroy if it has no nutrition left
-		if (Nutrition<=0) { 
-			if (Claimer!=null) {
-				//Eater.GetComponent<DudeCode>().FoodGone();
-			}
-			Destroy(transform.gameObject);
-		}
-	
+			
 	}
 
 	void OnGUI() {
@@ -61,5 +51,14 @@ public class FoodController : MonoBehaviour {
 
 	void NotClaimed() {
 		Claimer=null;
+	}
+
+	public void BeEaten(int eatIncrement) {
+		Nutrition-=eatIncrement;
+		if (Nutrition<=0) {
+			Claimer.GetComponent<DudeActions>().FoodGone();
+			Destroy(gameObject);
+		}
+
 	}
 }

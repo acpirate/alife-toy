@@ -29,6 +29,7 @@ public class DudeController : MonoBehaviour {
 		//metabolism goes down every turn
 		myActions.ConsumeMetabolism();
 
+		//behave accordingly
 		switch (myProperties.getBehavior()) {
 			case DudeBehavior.Idle :
 				IdleBehavior();
@@ -37,12 +38,16 @@ public class DudeController : MonoBehaviour {
 			case DudeBehavior.LookingForFood:
 				FoodSearch();
 			break;
+
+			case DudeBehavior.MovingToDestination:
+				MoveToDestination();
+			break;
+
+			case DudeBehavior.Eating:
+				Eat();
+				CheckFullness();
+			break;
 		}
-
-
-		//check for hunger
-		myDecisions.CheckHungry();
-
 	}
 
 	void OnGUI() {
@@ -67,11 +72,12 @@ public class DudeController : MonoBehaviour {
 	//display methods
 	void ShowUnitStats() {
 		GUI.Label(new Rect(10,10,1000,100),"Life: "+myProperties.getLife());
-		GUI.Label(new Rect(10,30,1000,100),"Metabolism: "+ myProperties.getMetabolism());
-		GUI.Label(new Rect(10,50,1000,100),"Status: "+ myProperties.getStatus());
-		GUI.Label(new Rect(10,70,1000,100),"Behavior: "+ myProperties.getBehavior());
-		//GUI.Label(new Rect(10,90,1000,100),"FoodTarget: "+ foodTarget);
-		GUI.Label(new Rect(10,110,1000,100),"Destination: "+ myProperties.getDestination().getCoordinates());
+		GUI.Label(new Rect(10,25,1000,100),"Metabolism: "+ myProperties.getMetabolism());
+		GUI.Label(new Rect(10,40,1000,100),"Status: "+ myProperties.getStatus());
+		GUI.Label(new Rect(10,55,1000,100),"Behavior: "+ myProperties.getBehavior());
+		GUI.Label(new Rect(10,70,1000,100),"FoodTarget: "+ myProperties.getFoodTarget());
+		GUI.Label(new Rect(10,85,1000,100),"Destination: "+ myProperties.getDestination().getCoordinates());
+		GUI.Label(new Rect(10,100,1000,100),"Claimed Food: "+ myProperties.getClaimedFood());
 	}
 
 	void IdleBehavior() {
@@ -79,7 +85,19 @@ public class DudeController : MonoBehaviour {
 	}
 
 	void FoodSearch() {
+		myActions.FindFood();
+	}
 
+	void MoveToDestination() {
+		myActions.MoveToDestination();
+	}
+
+	void Eat() {
+		myActions.EatFood();
+	}
+
+	void CheckFullness() {
+		myDecisions.CheckFullness();
 	}
 
 
