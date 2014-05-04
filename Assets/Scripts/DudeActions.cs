@@ -4,23 +4,37 @@ using System.Collections;
 public class DudeActions : MonoBehaviour {
 
 	DudeProperties myProperties;
-	DudeDecisions myDecisions;
 	//unity methods
 
 		// Use this for initialization
 	void Awake() {
 		myProperties=gameObject.GetComponent<DudeProperties>();
-		myDecisions=gameObject.GetComponent<DudeDecisions>();
 	}
 
 	//behavior methods
 	public void ConsumeMetabolism() {
+		//lose metabolism every frame
 		myProperties.setMetabolism(
 			myProperties.getMetabolism()-
 			Parameters.Dude_MetabolismDrainRate);
+		//metabolism can't go below 0
+		if (myProperties.getMetabolism()<=0) myProperties.setMetabolism(0);
+		//if the metabolism is 0 start losing life
+		if (myProperties.getMetabolism()==0) {
+			myProperties.setLife(
+				myProperties.getLife()-Parameters.Dude_StarvationDamageRate);
+		}
+		if (myProperties.getLife()<=0) Death();
 	}
 	
 	public void ClaimFood() {
+		//I don't know why this is happeing so this is a bandaid to avoid it
+		//avoid bug of stalling in "looking for food" when food is claimed and in range, comment out this statement to debug
+		if (myProperties.getClaimedFood()!=null) {
+			myProperties.getClaimedFood().GetComponent<FoodController>().setClaimer(null);
+			myProperties.setClaimedFood(null);
+		}
+
 		//find things in eating range
 		Collider[] thingsInEatingRange = Physics.OverlapSphere(transform.position,Parameters.Dude_EatingDistance);
 		//iterate over list of things in eating range
@@ -125,8 +139,17 @@ public class DudeActions : MonoBehaviour {
 		myProperties.setMetabolism(myProperties.getMetabolism()+Parameters.Dude_EatingGain);
 	}
 
+	//called by food when the food runs out of nutrional value and disappears
 	public void FoodGone() {
 		myProperties.setClaimedFood(null);
 		myProperties.setBehavior(DudeBehavior.Idle);
+	}
+
+	void Death() {
+		//dead dudes can't own food
+		if (myProperties.getClaimedFood()!=null) {
+			myProperties.getClaimedFood().GetComponent<FoodController>().setClaimer(null);
+			myProperties.setClaimedFood(null);
+		}
 	}
 }

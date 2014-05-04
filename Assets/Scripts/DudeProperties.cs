@@ -69,6 +69,10 @@ public class DudeProperties : MonoBehaviour {
 		foodTarget=foodTargetToSet;
 	}
 
+	public void setLife(int lifeToSet) {
+		Life=lifeToSet;
+	}
+
 	public void setMetabolism(int metabolismToSet) {
 		Metabolism=metabolismToSet;
 	}

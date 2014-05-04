@@ -33,7 +33,8 @@ public class DudeDecisions : MonoBehaviour {
 			myProperties.setMetabolism(Parameters.Dude_StartingMetabolism);
 			myProperties.setBehavior(DudeBehavior.Idle);
 			//release food when dude is done
-			myProperties.getClaimedFood().GetComponent<FoodController>().setClaimer(null);
+			if (myProperties.getClaimedFood()!=null)
+				myProperties.getClaimedFood().GetComponent<FoodController>().setClaimer(null);
 			myProperties.setClaimedFood(null);
 		}
 	}

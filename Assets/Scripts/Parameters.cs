@@ -12,9 +12,9 @@ public class Parameters {
 
 	//dude parameters
 
-	public static readonly int Dude_StartingLife=100000;
-	public static readonly int Dude_StartingMetabolism=10000;
-	public static readonly int Dude_HungerThreshold=9500; //level below which the dude gets hungry
+	public static readonly int Dude_StartingLife=1000;
+	public static readonly int Dude_StartingMetabolism=1000;
+	public static readonly int Dude_HungerThreshold=500; //level below which the dude gets hungry
 	public static readonly int Dude_EatingRate=1; //number of nutrition units consumed from food every frame of eating
 	public static readonly int Dude_EatingDistance=5; //food within this radius can be claimed and eaten
 	public static readonly int Dude_MetabolismDrainRate=1; //number of metabolism units lost every frame

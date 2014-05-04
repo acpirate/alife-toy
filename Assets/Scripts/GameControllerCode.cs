@@ -3,8 +3,13 @@ using System.Collections;
 
 public class GameControllerCode : MonoBehaviour {
 
-	public GameObject Dude;
-	public GameObject Food;
+	public static GameObject Dude;
+	public static GameObject Food;
+	public static GameObject Corpse;
+
+	public static GameObject DudeContainer;
+	public static GameObject FoodContainer;
+	public static GameObject CorpseContainer;
 
 	int numberOfDudesToSpawn=Parameters.Field_NumberOfDudesToSpawn;
 	int numberOfFoodsToSpawn=Parameters.Field_NumberOfFoodsToSpawn;
@@ -44,13 +49,17 @@ public class GameControllerCode : MonoBehaviour {
 
 	void SpawnDudes() {
 		for (int counter=0;counter<numberOfDudesToSpawn;counter++) {
-			Instantiate(Dude,new Vector3(Random.Range(-spawnRadius,spawnRadius),1,Random.Range(-spawnRadius,spawnRadius)),Quaternion.identity);
+			GameObject tempDude=(GameObject)
+				Instantiate(Dude,new Vector3(Random.Range(-spawnRadius,spawnRadius),1,Random.Range(-spawnRadius,spawnRadius)),Quaternion.identity);
+			tempDude.transform.parent=DudeContainer.transform;
 		}
 	}
 
 	void SpawnFood() {
 		for (int counter=0;counter<numberOfFoodsToSpawn;counter++) {
-			Instantiate(Food,new Vector3(Random.Range(-spawnRadius,spawnRadius),1,Random.Range(-spawnRadius,spawnRadius)),Quaternion.identity);
+			GameObject tempFood=(GameObject)
+				Instantiate(Food,new Vector3(Random.Range(-spawnRadius,spawnRadius),1,Random.Range(-spawnRadius,spawnRadius)),Quaternion.identity);
+			tempFood.transform.parent=FoodContainer.transform;
 		}
 	}
 }
