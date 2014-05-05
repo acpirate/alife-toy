@@ -3,13 +3,22 @@ using System.Collections;
 
 public class GameControllerCode : MonoBehaviour {
 
-	public static GameObject Dude;
-	public static GameObject Food;
-	public static GameObject Corpse;
+	public GameObject TransferDude;
+	public GameObject TransferFood;
+	public GameObject TransferCorpse;
 
-	public static GameObject DudeContainer;
-	public static GameObject FoodContainer;
-	public static GameObject CorpseContainer;
+	public GameObject TransferDudeContainer;
+	public GameObject TransferFoodContainer;
+	public GameObject TransferCorpseContainer;
+
+	static GameObject Dude=null;
+	static GameObject Food=null;
+	static GameObject Corpse=null;
+	
+	static GameObject DudeContainer=null;
+	static GameObject FoodContainer=null;
+	static GameObject CorpseContainer=null;
+
 
 	int numberOfDudesToSpawn=Parameters.Field_NumberOfDudesToSpawn;
 	int numberOfFoodsToSpawn=Parameters.Field_NumberOfFoodsToSpawn;
@@ -18,9 +27,21 @@ public class GameControllerCode : MonoBehaviour {
 	//monobehaviors
 
 	void Awake() {
+		//use transfer method to move editor variables to static objects
+		if (Dude==null) Dude=TransferDude;
+		if (Food==null) Food=TransferFood;
+		if (Corpse==null) Corpse=TransferCorpse;
+		
+		if (DudeContainer==null) DudeContainer=TransferDudeContainer;
+		if (FoodContainer==null) FoodContainer=TransferFoodContainer;
+		if (CorpseContainer==null) CorpseContainer=TransferCorpseContainer;
+
+
 		//spawn dudes
 		SpawnDudes();
 		SpawnFood();
+
+
 	}
 
 	// Use this for initialization
@@ -61,5 +82,13 @@ public class GameControllerCode : MonoBehaviour {
 				Instantiate(Food,new Vector3(Random.Range(-spawnRadius,spawnRadius),1,Random.Range(-spawnRadius,spawnRadius)),Quaternion.identity);
 			tempFood.transform.parent=FoodContainer.transform;
 		}
+	}
+
+	public static void DudeDeath(GameObject dudeWhoDied) {
+		GameObject tempCorpse=(GameObject) Instantiate(
+			Corpse, dudeWhoDied.transform.position,dudeWhoDied.transform.rotation);
+		Destroy(dudeWhoDied);
+		tempCorpse.transform.parent=CorpseContainer.transform;
+
 	}
 }

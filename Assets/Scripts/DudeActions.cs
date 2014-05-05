@@ -104,7 +104,7 @@ public class DudeActions : MonoBehaviour {
 			//iterate over list of things in eating range
 			foreach (Collider thingInSightRange in thingsInSightRange) {
 				//if the thing it found is food
-				if (thingInSightRange.gameObject.name=="Banana(Clone)") {
+				if (thingInSightRange.gameObject.GetComponent<Attributes>().WhatAmI==ObjectType.FOOD) {
 					//if the food isn't already claimed
 					if (thingInSightRange.gameObject.GetComponent<FoodController>().getClaimer()==null) {
 						myProperties.setFoodTarget(thingInSightRange.gameObject);
@@ -151,5 +151,6 @@ public class DudeActions : MonoBehaviour {
 			myProperties.getClaimedFood().GetComponent<FoodController>().setClaimer(null);
 			myProperties.setClaimedFood(null);
 		}
+		GameControllerCode.DudeDeath(gameObject);
 	}
 }
