@@ -39,8 +39,10 @@ public class DudeActions : MonoBehaviour {
 		Collider[] thingsInEatingRange = Physics.OverlapSphere(transform.position,Parameters.Dude_EatingDistance);
 		//iterate over list of things in eating range
 		foreach (Collider thingInEatingRange in thingsInEatingRange) {
-			//if the thing it found is food
-			if (thingInEatingRange.gameObject.name=="Banana(Clone)") {
+			//if the thing it found is food or the guy is really hungry and sees a corpse
+			if (thingInEatingRange.gameObject.GetComponent<Attributes>().WhatAmI==ObjectType.FOOD || 
+			    (myProperties.getMetabolism()<Parameters.Dude_CannibalismThreshold && 
+			 		thingInEatingRange.gameObject.GetComponent<Attributes>().WhatAmI==ObjectType.CORPSE)) {
 				//if the food isn't already claimed
 				if (thingInEatingRange.gameObject.GetComponent<FoodController>().getClaimer()==null) {
 					myProperties.setClaimedFood(thingInEatingRange.gameObject);
@@ -104,7 +106,9 @@ public class DudeActions : MonoBehaviour {
 			//iterate over list of things in eating range
 			foreach (Collider thingInSightRange in thingsInSightRange) {
 				//if the thing it found is food
-				if (thingInSightRange.gameObject.GetComponent<Attributes>().WhatAmI==ObjectType.FOOD) {
+				if (thingInSightRange.gameObject.GetComponent<Attributes>().WhatAmI==ObjectType.FOOD || 
+				    (thingInSightRange.gameObject.GetComponent<Attributes>().WhatAmI==ObjectType.CORPSE &&
+				 		myProperties.getMetabolism()<Parameters.Dude_CannibalismThreshold)) {
 					//if the food isn't already claimed
 					if (thingInSightRange.gameObject.GetComponent<FoodController>().getClaimer()==null) {
 						myProperties.setFoodTarget(thingInSightRange.gameObject);

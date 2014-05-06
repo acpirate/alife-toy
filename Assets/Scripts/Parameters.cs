@@ -28,4 +28,7 @@ public class Parameters {
 
 	public static readonly int Food_StartingNutrition=600;
 
+	//corpse parameters
+
+	public static readonly int Corpse_StartingNutrition=500;
 }

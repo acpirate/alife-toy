@@ -3,15 +3,18 @@ using System.Collections;
 
 public class FoodController : MonoBehaviour {
 
-	float Nutrition = Parameters.Food_StartingNutrition;
+	float Nutrition = 0;
 	GameObject Claimer = null;
 	bool showUnitStats=false;
 
-	// Use this for initialization
-	void Start () {
-	
+	void Awake() {
+		if (gameObject.GetComponent<Attributes>().WhatAmI==ObjectType.FOOD)
+			Nutrition=Parameters.Food_StartingNutrition;
+		if (gameObject.GetComponent<Attributes>().WhatAmI==ObjectType.CORPSE)
+			Nutrition=Parameters.Corpse_StartingNutrition;
 	}
 	
+
 	// Update is called once per frame
 	void FixedUpdate () {
 			
