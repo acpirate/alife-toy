@@ -52,6 +52,10 @@ public class FoodController : MonoBehaviour {
 		return Claimer;
 	}
 
+	public float getNutrition() {
+		return Nutrition;
+	}
+
 	void NotClaimed() {
 		Claimer=null;
 	}
@@ -64,4 +68,9 @@ public class FoodController : MonoBehaviour {
 		}
 
 	}
+
+	public void FoodGrowth() {
+		Nutrition+=Parameters.Food_GrowthRate;
+	}
+
 }

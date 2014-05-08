@@ -27,6 +27,7 @@ public class Parameters {
 	//food parameters
 
 	public static readonly int Food_StartingNutrition=600;
+	public static readonly float Food_GrowthRate=.5f;
 
 	//corpse parameters
 
