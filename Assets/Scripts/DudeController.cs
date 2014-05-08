@@ -7,6 +7,8 @@ public class DudeController : MonoBehaviour {
 	DudeDecisions myDecisions;
 	DudeActions myActions;
 
+	protected Animator animator;
+
 	//if this is true show the unit stats
 	bool showUnitStats=false;
 
@@ -18,6 +20,8 @@ public class DudeController : MonoBehaviour {
 		myProperties=gameObject.GetComponent<DudeProperties>();
 		myDecisions=gameObject.GetComponent<DudeDecisions>();
 		myActions=gameObject.GetComponent<DudeActions>();
+
+		animator=GetComponent<Animator>();
 	}
 
 	void Start () {
@@ -28,6 +32,8 @@ public class DudeController : MonoBehaviour {
 	void FixedUpdate() {
 		//metabolism goes down every turn
 		myActions.ConsumeMetabolism();
+
+		animator.SetBool("Moving",false);
 
 		//behave accordingly
 		switch (myProperties.getBehavior()) {
@@ -40,6 +46,7 @@ public class DudeController : MonoBehaviour {
 			break;
 
 			case DudeBehavior.MovingToDestination:
+				animator.SetBool("Moving",true);
 				MoveToDestination();
 			break;
 
