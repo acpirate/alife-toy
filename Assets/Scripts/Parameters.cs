@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum ANIMALTYPE { DUDE };
+public enum PLANTTYPE { MUSHROOM };
+
 public class Parameters {
 
 	//world parameters
@@ -9,6 +12,7 @@ public class Parameters {
 	public static readonly int Field_SpawnRadius=450; //distance from center objects can spawn
 	public static readonly int Field_NumberOfDudesToSpawn=50;
 	public static readonly int Field_NumberOfFoodsToSpawn=100;
+	public static readonly int Field_NumberOfPredatorsToSpawn=5;
 
 	//dude parameters
 
@@ -23,13 +27,27 @@ public class Parameters {
 	public static readonly int Dude_StarvationDamageRate=1; //number of life units lost for each frame of starvation
 	public static readonly int Dude_SightDistance=50; //how far dudes can see
 	public static readonly int Dude_Speed=1; //how fast the dude moves
+	public static GameObject DudePrefab;
 
 	//food parameters
 
 	public static readonly int Food_StartingNutrition=600;
 	public static readonly float Food_GrowthRate=.5f;
 
+	public static GameObject MushroomPrefab;
+
 	//corpse parameters
 
 	public static readonly int Corpse_StartingNutrition=500;
+
+	//predator parameters
+
+
+	//public functions
+	public static void Initialize() {
+		DudePrefab=TransferController.DudePrefab;
+		MushroomPrefab=TransferController.MushroomPrefab;
+	}
+
+
 }
