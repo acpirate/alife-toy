@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum ObjectType { FOOD, DUDE, CORPSE };
+public enum ObjectType { FOOD, DUDE, CORPSE, GROUND };
 
 public class Attributes : MonoBehaviour {
 
