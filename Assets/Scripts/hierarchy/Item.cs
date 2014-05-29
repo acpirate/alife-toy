@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Item : Thing {
+public class Item {
 
 	public Item() {
 

@@ -52,8 +52,8 @@ public class GameControllerCode : MonoBehaviour {
 
 		//spawn stuff
 
-		SpawnAnimals();
-		SpawnPlants();
+		//SpawnAnimals();
+		//SpawnPlants();
 
 		//SpawnFood();
 		//SpawnPredators();
@@ -81,7 +81,7 @@ public class GameControllerCode : MonoBehaviour {
 	// My functions
 	
 
-	//right now dudes are the only kind of animal
+	/*//right now dudes are the only kind of animal
 	void SpawnAnimals() {
 		//spawn dudes
 
@@ -96,7 +96,7 @@ public class GameControllerCode : MonoBehaviour {
 				            Quaternion.identity);
 			tempDude.transform.parent=DudeContainer.transform;
 
-			tempAnimal.setWorldObject(tempDude);
+			//tempAnimal.setWorldObject(tempDude);
 		}
 	}
 
@@ -117,23 +117,9 @@ public class GameControllerCode : MonoBehaviour {
 			tempPlant.setWorldObject(tempMushroom);
 		}
 
-	}
+	}*/
 
-	void SpawnFood() {
-		for (int counter=0;counter<numberOfFoodsToSpawn;counter++) {
-			GameObject tempFood=(GameObject)
-				Instantiate(Food,new Vector3(Random.Range(-spawnRadius,spawnRadius),1,Random.Range(-spawnRadius,spawnRadius)),Quaternion.identity);
-			tempFood.transform.parent=FoodContainer.transform;
-		}
-	}
-
-	void SpawnPredators() {
-		for (int counter=0;counter<numberOfPredatorsToSpawn;counter++) {
-			GameObject tempPredator=(GameObject)
-				Instantiate(Predator,new Vector3(Random.Range(-spawnRadius,spawnRadius),1.5f,Random.Range(-spawnRadius,spawnRadius)),Quaternion.identity);
-			tempPredator.transform.parent=PredatorContainer.transform;
-		}
-	}
+	
 
 	public static void DudeDeath(GameObject dudeWhoDied) {
 		GameObject tempCorpse=(GameObject) Instantiate(

@@ -3,18 +3,41 @@ using System.Collections;
 
 public class Creature : Agent {
 
-	int Life;
+	int lifePoints;
+	public int maxLifePoints;
+	public int moveRate;
 
-	public Creature(int inLife) {
-		Life=inLife;
+	Corpse corpse;
+	Vector3 destination;
+
+
+
+	public override void FixedUpdate() {
+		checkDeath();
+	}
+
+	public override void Awake() {
+		lifePoints=maxLifePoints;
 	}
 
 	public int getLife() {
-		return Life;
+		return lifePoints;
+	}
+	
+	public void setLife(int inLife) {
+		lifePoints=inLife;
 	}
 
-	public void setLife(int inLife) {
-		Life=inLife;
+	public Corpse getCorpse() {
+		return corpse;
+	}
+
+	public void setCorpse(Corpse inCorpse) {
+		corpse=inCorpse;
+	}
+
+	void checkDeath() {
+		if (lifePoints<=0) imDead();
 	}
 
 }

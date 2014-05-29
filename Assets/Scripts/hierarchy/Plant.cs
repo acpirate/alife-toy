@@ -3,21 +3,49 @@ using System.Collections;
 
 public class Plant : Creature {
 
-	int FoodCount=0;
-	Food myFood;
+	public int growthTime;
+	public int startingFoodCount;
 
-	PLANTTYPE myType;
+	int foodCount;
+	int growthTimer=0;
 
-	public Plant(int inLife, int inFoodCount) : 
-		base(inLife)
+	bool growth=true;
+
+	public override void Awake ()
 	{
-		FoodCount=inFoodCount;
+		foodCount=startingFoodCount;
+		base.Awake ();
 	}
 
-	public void setFood() {
-
+	public override void FixedUpdate ()
+	{
+		base.FixedUpdate ();
+		checkEmpty();
+		if (growth) growPlant();
+		growth=true;
 	}
 
+	public override void OnTriggerStay() {
+		growth=false;
+	}
+
+	void checkEmpty() {
+		//if the plant is fully harvested destroy it
+		if (foodCount==0) {
+			setLife(0);
+		}
+	}
+
+	void growPlant() {
+		growthTimer++;
+		if (growthTimer>=growthTime) {
+			growthTimer=0;
+			foodCount++;
+		}
+		float sizeRatio=(float)foodCount/(float)startingFoodCount;
+		transform.localScale=new Vector3(sizeRatio,sizeRatio,sizeRatio);
+
+	}
 
 
 }
