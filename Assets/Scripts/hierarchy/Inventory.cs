@@ -4,26 +4,30 @@ using System.Collections.Generic;
 
 public class Inventory {
 
-	List<Item> Items = new List<Item>();
+	List<Item> items;
 
 	public Inventory() {
-
+		items=new List<Item>();
 	}
 
 	public bool isEmpty() {
 		bool empty=false;
 
-		if (Items.Count==0) empty=true;
+		if (items.Count==0) empty=true;
 
 		return empty;
 	}
 
 	public void putItem(Item itemToPut) {
-		Items.Add(itemToPut);
+		items.Add(itemToPut);
 	}
 
 	public void retrieveItem(Item itemToRetrieve) {
-		Items.Remove(itemToRetrieve);
+		items.Remove(itemToRetrieve);
+	}
+
+	public List<Item> getItems() {
+		return items;
 	}
 
 }

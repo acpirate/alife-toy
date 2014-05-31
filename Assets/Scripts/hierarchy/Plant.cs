@@ -5,6 +5,7 @@ public class Plant : Creature {
 
 	public int growthTime;
 	public int startingFoodCount;
+	public FOODTYPE plantType;
 
 	int foodCount;
 	int growthTimer=0;
@@ -42,9 +43,24 @@ public class Plant : Creature {
 			growthTimer=0;
 			foodCount++;
 		}
-		float sizeRatio=(float)foodCount/(float)startingFoodCount;
-		transform.localScale=new Vector3(sizeRatio,sizeRatio,sizeRatio);
+		sizeModel();
 
+
+	}
+
+	public FOODTYPE getPlantType() {
+		return plantType;
+	}
+
+	public Food harvestFood() {
+		foodCount--;
+		sizeModel();
+		return new Food(FOODTYPE.MUSHROOM_PART,100);
+	}
+
+	void sizeModel() {
+		float sizeRatio=(float)foodCount/(float)startingFoodCount;
+		transform.localScale=new Vector3(sizeRatio,sizeRatio,sizeRatio);		
 	}
 
 

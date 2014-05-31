@@ -2,12 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public enum BEHAVIORTYPE { IDLE, EATING, LOOKINGFORFOOD, MOVINGTODESTINATION };
+public enum BEHAVIORTYPE { IDLE, EATING, LOOKINGFORFOOD, MOVINGTODESTINATION, HARVESTING};
+public enum STATUS { NORMAL, HUNGRY };
 
 public class Agent : MonoBehaviour {
 
 	public int sightRadius;
-	Inventory inventory;
+	protected Inventory inventory=new Inventory();
 	
 	public virtual void FixedUpdate() {
 		
@@ -19,19 +20,6 @@ public class Agent : MonoBehaviour {
 
 	public virtual void OnTriggerStay() {
 
-	}
-
-	public List<GameObject> stuffICanSee() {
-		List<GameObject> tempStuffList=new List<GameObject>();
-
-		Collider[] collidersInSightRange = Physics.OverlapSphere(transform.position,sightRadius);
-
-		foreach (Collider colliderInSightRange in collidersInSightRange) {
-			if (colliderInSightRange.gameObject!=gameObject) tempStuffList.Add(colliderInSightRange.gameObject);
-		}
-
-
-		return tempStuffList;
 	}
 
 	public void imDead() {

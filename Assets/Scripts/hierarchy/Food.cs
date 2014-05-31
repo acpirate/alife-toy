@@ -5,8 +5,27 @@ public enum FOODTYPE { MUSHROOM_PART, MEAT };
 
 public class Food : Item {
 
-	public Food() {
+	FOODTYPE myFoodType;
+	int nutritionAmount;
 
+	public Food(FOODTYPE inFoodType, int inNutritionAmount) {
+		myFoodType=inFoodType;
+		nutritionAmount=inNutritionAmount;
+	}
+
+	public FOODTYPE getFoodType() {
+		return myFoodType;
+	}
+
+	public void beEaten(int biteValue) {
+		nutritionAmount-=biteValue;
+	}
+
+	public bool isGone() {
+		bool tempGone=false;
+		if (nutritionAmount<=0) tempGone=true;
+
+		return tempGone;
 	}
 
 }

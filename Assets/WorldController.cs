@@ -83,5 +83,18 @@ public class WorldController : MonoBehaviour {
 		return locationClear;
 	}
 
+	public static List<GameObject> stuffInRadius(Vector3 center, int radius) {
+		List<GameObject> tempStuffList=new List<GameObject>();
+		
+		Collider[] collidersInSightRange = Physics.OverlapSphere(center,radius);
+		
+		foreach (Collider colliderInSightRange in collidersInSightRange) {
+			tempStuffList.Add(colliderInSightRange.gameObject);
+		}
+		
+		
+		return tempStuffList;
+	}
+
 
 }
